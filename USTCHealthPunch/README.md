@@ -8,7 +8,7 @@
 
 **Windows**：
 
-访问[这里](`https://digi.bib.uni-mannheim.de/tesseract/`)，下载`.exe`文件安装.
+访问[这里](https://digi.bib.uni-mannheim.de/tesseract/)，下载`.exe`文件安装.
 
 **Ubuntu**：
 
