@@ -6,83 +6,102 @@ Testbench file made by VerilogTestbenchGen.py
 
 module test_AXI_Top();
 
-reg  clk;
-reg  rstn;
-reg  i_rd_req;
-reg  [2:0] i_rd_type;
-reg  [31:0] i_rd_addr;
-wire i_rd_rdy;
-wire i_ret_valid;
-wire i_ret_last;
-wire [31:0] i_ret_data;
-reg  i_wr_req;
-reg  [2:0] i_wr_type;
-reg  [31:0] i_wr_addr;
-reg  [3:0] i_wr_wstrb;
-reg  [127:0] i_wr_data;
-wire i_wr_rdy;
-reg  d_rd_req;
-reg  [2:0] d_rd_type;
-reg  [31:0] d_rd_addr;
-wire d_rd_rdy;
-wire d_ret_valid;
-wire d_ret_last;
-wire [31:0] d_ret_data;
-reg  d_wr_req;
-reg  [2:0] d_wr_type;
-reg  [31:0] d_wr_addr;
-reg  [3:0] d_wr_wstrb;
-reg  [127:0] d_wr_data;
-wire d_wr_rdy;
-wire TxD;
-reg  RxD;
-wire interrupt;
-wire [11:0] vrgb;
-wire hs;
-wire vs;
+reg                 clk;
+reg                 rstn;
+reg                 i_rd_req;
+reg  [2:0]          i_rd_type;
+reg  [31:0]         i_rd_addr;
+wire                i_rd_rdy;
+wire                i_ret_valid;
+wire                i_ret_last;
+wire [31:0]         i_ret_data;
+reg                 i_wr_req;
+reg  [2:0]          i_wr_type;
+reg  [31:0]         i_wr_addr;
+reg  [3:0]          i_wr_wstrb;
+reg  [127:0]        i_wr_data;
+wire                i_wr_rdy;
+reg                 d_rd_req;
+reg  [2:0]          d_rd_type;
+reg  [31:0]         d_rd_addr;
+wire                d_rd_rdy;
+wire                d_ret_valid;
+wire                d_ret_last;
+wire [31:0]         d_ret_data;
+reg                 d_wr_req;
+reg  [2:0]          d_wr_type;
+reg  [31:0]         d_wr_addr;
+reg  [3:0]          d_wr_wstrb;
+reg  [127:0]        d_wr_data;
+wire                d_wr_rdy;
+wire                TxD;
+reg                 RxD;
+wire                interrupt;
+wire [11:0]         vrgb;
+wire                hs;
+wire                vs;
+
 
 initial
 begin
-	
+	clk           ='d0;
+	rstn          ='d0;
+	i_rd_req      ='d0;
+	i_rd_type     ='d0;
+	i_rd_addr     ='d0;
+	i_wr_req      ='d0;
+	i_wr_type     ='d0;
+	i_wr_addr     ='d0;
+	i_wr_wstrb    ='d0;
+	i_wr_data     ='d0;
+	d_rd_req      ='d0;
+	d_rd_type     ='d0;
+	d_rd_addr     ='d0;
+	d_wr_req      ='d0;
+	d_wr_type     ='d0;
+	d_wr_addr     ='d0;
+	d_wr_wstrb    ='d0;
+	d_wr_data     ='d0;
+	RxD           ='d0;
 end
 
 
 AXI_Top inst_AXI_Top
 (
-	.clk(clk),
-	.rstn(rstn),
-	.i_rd_req(i_rd_req),
-	.i_rd_type(i_rd_type),
-	.i_rd_addr(i_rd_addr),
-	.i_rd_rdy(i_rd_rdy),
-	.i_ret_valid(i_ret_valid),
-	.i_ret_last(i_ret_last),
-	.i_ret_data(i_ret_data),
-	.i_wr_req(i_wr_req),
-	.i_wr_type(i_wr_type),
-	.i_wr_addr(i_wr_addr),
-	.i_wr_wstrb(i_wr_wstrb),
-	.i_wr_data(i_wr_data),
-	.i_wr_rdy(i_wr_rdy),
-	.d_rd_req(d_rd_req),
-	.d_rd_type(d_rd_type),
-	.d_rd_addr(d_rd_addr),
-	.d_rd_rdy(d_rd_rdy),
-	.d_ret_valid(d_ret_valid),
-	.d_ret_last(d_ret_last),
-	.d_ret_data(d_ret_data),
-	.d_wr_req(d_wr_req),
-	.d_wr_type(d_wr_type),
-	.d_wr_addr(d_wr_addr),
-	.d_wr_wstrb(d_wr_wstrb),
-	.d_wr_data(d_wr_data),
-	.d_wr_rdy(d_wr_rdy),
-	.TxD(TxD),
-	.RxD(RxD),
-	.interrupt(interrupt),
-	.vrgb(vrgb),
-	.hs(hs),
-	.vs(vs)
+	.clk(clk),                   // input
+	.rstn(rstn),                 // input
+	.i_rd_req(i_rd_req),         // input
+	.i_rd_type(i_rd_type),       // input [2:0]
+	.i_rd_addr(i_rd_addr),       // input [31:0]
+	.i_rd_rdy(i_rd_rdy),         // output
+	.i_ret_valid(i_ret_valid),   // output
+	.i_ret_last(i_ret_last),     // output
+	.i_ret_data(i_ret_data),     // output [31:0]
+	.i_wr_req(i_wr_req),         // input
+	.i_wr_type(i_wr_type),       // input [2:0]
+	.i_wr_addr(i_wr_addr),       // input [31:0]
+	.i_wr_wstrb(i_wr_wstrb),     // input [3:0]
+	.i_wr_data(i_wr_data),       // input [127:0]
+	.i_wr_rdy(i_wr_rdy),         // output
+	.d_rd_req(d_rd_req),         // input
+	.d_rd_type(d_rd_type),       // input [2:0]
+	.d_rd_addr(d_rd_addr),       // input [31:0]
+	.d_rd_rdy(d_rd_rdy),         // output
+	.d_ret_valid(d_ret_valid),   // output
+	.d_ret_last(d_ret_last),     // output
+	.d_ret_data(d_ret_data),     // output [31:0]
+	.d_wr_req(d_wr_req),         // input
+	.d_wr_type(d_wr_type),       // input [2:0]
+	.d_wr_addr(d_wr_addr),       // input [31:0]
+	.d_wr_wstrb(d_wr_wstrb),     // input [3:0]
+	.d_wr_data(d_wr_data),       // input [127:0]
+	.d_wr_rdy(d_wr_rdy),         // output
+	.TxD(TxD),                   // output
+	.RxD(RxD),                   // input
+	.interrupt(interrupt),       // output
+	.vrgb(vrgb),                 // output [11:0]
+	.hs(hs),                     // output
+	.vs(vs)                      // output
 );
 
 endmodule
