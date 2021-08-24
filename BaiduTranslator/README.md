@@ -26,3 +26,19 @@ pip install js2py
 运行结果如下：
 
 ![运行结果](result.png)
+
+在`Windows`环境下，你还可以将其打包为`.exe`文件，这样即使电脑不含`Python`也能运行，方法如下：
+
+安装`pyinstaller`:
+
+```
+pip install pyinstaller
+```
+
+在源码所在目录执行：
+
+```
+pyinstaller -F -w BaiduTranslator.py
+```
+
+即可生成`.exe`文件，位于`/dist`目录下
