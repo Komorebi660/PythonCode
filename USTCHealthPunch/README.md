@@ -4,11 +4,11 @@
 
 ### 安装依赖
 
-安装`OCR`依赖文件：
+安装`OCR`模块：
 
 **Windows**：
 
-访问`https://digi.bib.uni-mannheim.de/tesseract/`，下载`.exe`文件安装.
+访问[这里](`https://digi.bib.uni-mannheim.de/tesseract/`)，下载`.exe`文件安装.
 
 **Ubuntu**：
 
@@ -89,7 +89,7 @@ sudo crontab -e
 * 21 * * * /usr/bin/python3 /home/ubuntu/USTCHealthPunc.py
 ```
 
-就是每天`21：00`执行`USTCHealthPunch.py`文件
+就是每天`21：00`执行位于`/home/ubuntu/`下的`USTCHealthPunch.py`文件
 
 **第三步：重启`cron`服务**
 
