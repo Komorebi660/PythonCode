@@ -2,26 +2,12 @@
 
 **代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/20/USTCHealthPunch/)**
 
-### 安装依赖
-
-安装`OCR`模块：
-
-**Windows**：
-
-访问[这里](https://digi.bib.uni-mannheim.de/tesseract/)，下载`.exe`文件安装.
-
-**Ubuntu**：
-
-```
-sudo apt install tesseract
-```
+### 安装依赖库
 
 安装代码所需库：
 
 ```
 pip install requests
-pip install Image
-pip install pytesseract
 ```
 
 `re`、`io`库为`Python`自带库，无需手动安装。
@@ -53,7 +39,7 @@ pip install pytesseract
 UserName or Password ERROR!
 ```
 
-则表明用户名或密码输入错误，或者验证码识别错误，此时可多尝试几次。
+则表明用户名或密码输入错误，请检查参数是否修改正确。
 
 若出现
 

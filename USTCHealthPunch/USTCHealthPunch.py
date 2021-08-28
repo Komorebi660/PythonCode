@@ -4,9 +4,6 @@
 
 import requests
 import re
-from PIL import Image
-from io import BytesIO
-import pytesseract
 from requests.sessions import session
 requests.packages.urllib3.disable_warnings()
 
@@ -36,27 +33,16 @@ CAS_LT = re.findall('(?<=name="CAS_LT" value=")(.*?)(?=")', CAS_LT_html)[0]
 # print(CAS_LT)
 # -----------------------------------------------------------------
 
-# ------------------------ Step2: 获取LT --------------------------
-LT_url = 'https://passport.ustc.edu.cn/validatecode.jsp?type=login'
-LT_img = session.get(LT_url).content
-img = Image.open(BytesIO(LT_img))
-# img.show()
-text = pytesseract.image_to_string(img)
-LT = re.sub("\D", "", text)
-# print(LT)
-# -----------------------------------------------------------------
-
-# ----------------------- Step3: 获取token ------------------------
+# ----------------------- Step2: 获取token ------------------------
 login_url = 'https://passport.ustc.edu.cn/login'
 login_data = {
     'model': 'uplogin.jsp',
     'CAS_LT': CAS_LT,
     'service': 'https://weixine.ustc.edu.cn/2020/caslogin',
     'warn': '',
-    'showCode': '1',
+    'showCode': '',
     'username': USR,
     'password': PWD,
-    'LT': LT,
     'button': ''
 }
 login_res = session.post(login_url, data=login_data)
@@ -70,7 +56,7 @@ _token = token_temp[0]
 # print(token)
 # -----------------------------------------------------------------
 
-# ------------------------- Step4: 上报 ---------------------------
+# ------------------------- Step3: 上报 ---------------------------
 post_url = 'https://weixine.ustc.edu.cn/2020/daliy_report'
 post_data = {
     '_token': _token,
