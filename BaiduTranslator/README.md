@@ -25,7 +25,9 @@ pip install js2py
 
 运行结果如下：
 
-![运行结果](result.png)
+![运行结果1](result1.png)
+
+![运行结果2](result2.png)
 
 在`Windows`环境下，你还可以将其打包为`.exe`文件，这样即使电脑不含`Python`也能运行，方法如下：
 

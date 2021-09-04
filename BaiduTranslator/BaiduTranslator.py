@@ -190,13 +190,13 @@ input.place(relx=0.05, y=90, relwidth=0.4, relheight=0.8)
 output = Text(root, fg="gray", font=("微软雅黑", 10))
 output.place(relx=0.55, y=90, relwidth=0.4, relheight=0.8)
 
-btn_zh_to_en = Button(root, text='zh-->en\n中-->英', font=("微软雅黑", 10), fg="white",
-                      bg="gray", command=getrans_zh_to_en)
-btn_zh_to_en.place(relx=0.46, rely=0.28, relwidth=0.08, height=40)
+btn_zh_to_en = Button(root, text='ZH-->EN', font=("微软雅黑", 10),
+                      fg="white", bg="gray", command=getrans_zh_to_en)
+btn_zh_to_en.place(relx=0.46, rely=0.29, relwidth=0.08, height=20)
 
-btn_zh_to_en = Button(root, text='en-->zh\n英-->中', font=("微软雅黑", 10), fg="white",
-                      bg="gray", command=getrans_en_to_zh)
-btn_zh_to_en.place(relx=0.46, rely=0.50, relwidth=0.08, height=40)
+btn_zh_to_en = Button(root, text='EN-->ZH', font=("微软雅黑", 10),
+                      fg="white", bg="gray", command=getrans_en_to_zh)
+btn_zh_to_en.place(relx=0.46, rely=0.51, relwidth=0.08, height=20)
 
 btn_flush = Button(root, text='FLUSH', font=(
     "微软雅黑", 10), fg="red", command=flush)
