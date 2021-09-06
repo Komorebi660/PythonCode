@@ -13,6 +13,16 @@ pip install js2py
 
 `re`、`tkinter`库为`Python`自带库，无需手动安装。
 
+Linux环境可能没有安装`tkinter`库，输入：
+
+```
+sudo apt-get install python-tk
+或
+sudo apt-get install python3-tk
+```
+
+安装`tkinter`
+
 接下来，进入源码`BaiduTranslator.py`，修改参数(**必选**)：
 
 - **USER_AGENT**：位于`Request Headers`中的`User-Agent`;

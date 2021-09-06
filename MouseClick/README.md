@@ -2,6 +2,8 @@
 
 **代码介绍见[我的Blog](https://komorebi660.github.io/2021/09/04/MouseClick/)**
 
+**注意：本代码在`Linux`环境运行出现异常，目前暂不清楚原因，在`Windows10`下运行正常**
+
 ### 安装依赖库
 
 安装代码所需库：
@@ -11,6 +13,16 @@ pip install pynput
 ```
 
 `threading`、`time`、`tkinter`库为`Python`自带库，无需手动安装。
+
+Linux环境可能没有安装`tkinter`库，输入：
+
+```
+sudo apt-get install python-tk
+或
+sudo apt-get install python3-tk
+```
+
+安装`tkinter`
 
 ### 使用示例
 

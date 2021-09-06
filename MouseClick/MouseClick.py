@@ -1,3 +1,8 @@
+# ----------------------------------------------------------
+# coding=utf-8
+# Copyright © 2021 Komorebi660 All rights reserved.
+# ----------------------------------------------------------
+
 import time
 import threading
 import pynput.mouse  # pynput和tkinter都有Button这个包，注意区分
