@@ -98,9 +98,9 @@ pip install pystiche
 <img src=./images/result.jpg width=50%/>
 </div>
 
-整个训练过程花费大约`1min 45secs`，消耗大约`2500MiB`内存。测试机器配置为：
+整个训练过程花费大约`1min 45secs`，消耗大约`2500MiB`内存。测试机器的配置为：
 
 - Intel i7-9750H
-- Nvdia RTX2060
+- Nvidia RTX2060
 - Memory: 16GiB
 - SSD: 512GiB
