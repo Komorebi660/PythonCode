@@ -67,7 +67,7 @@ post_data = {
     'gps_province': '',
     'now_city': '340100',
     'gps_city': '',
-    'now_country': '',
+    'now_country': '340104',
     'gps_country': '',
     'now_detail': '',
     'is_inschool': LOCATION,
