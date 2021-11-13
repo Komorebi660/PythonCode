@@ -15,26 +15,28 @@ NORTH = 5  # 北区
 WEST = 6  # 西区
 OUT_CAMPUS = 0  # 校外
 
+# ------ 用户在运行前需更改的变量 ------ #
 USR = ''  # 学号
 PWD = ''  # 密码
 LOCATION = WEST  # 所在校区
 EMERGENCY_CONTACT = ''  # 紧急联系人姓名
 RELATIONSHIP = ''  # 本人与紧急联系人关系
 PHONE_NUMBER = ''  # 紧急联系人电话
+# ------------------------------------ #
+
 
 # 需要在同一session下执行
 session = requests.Session()
 
-
-# --------------------- Step1: 获取CAS_LT ------------------------
+# Step1: 获取CAS_LT
 CAS_LT_url = 'https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fweixine.ustc.edu.cn%2F2020%2Fcaslogin'
 CAS_LT_res = session.get(CAS_LT_url)
 CAS_LT_html = CAS_LT_res.content.decode()
 CAS_LT = re.findall('(?<=name="CAS_LT" value=")(.*?)(?=")', CAS_LT_html)[0]
 # print(CAS_LT)
-# -----------------------------------------------------------------
 
-# ----------------------- Step2: 获取token ------------------------
+
+#Step2: 获取token
 login_url = 'https://passport.ustc.edu.cn/login'
 login_data = {
     'model': 'uplogin.jsp',
@@ -55,9 +57,8 @@ if (len(token_temp) == 0):
     exit(0)
 _token = token_temp[0]
 # print(token)
-# -----------------------------------------------------------------
 
-# ------------------------- Step3: 上报 ---------------------------
+#Step3: 上报
 post_url = 'https://weixine.ustc.edu.cn/2020/daliy_report'
 post_data = {
     '_token': _token,
@@ -94,4 +95,3 @@ if (len(alert) == 0):
     exit(0)
 else:
     print(alert[0])
-# -----------------------------------------------------------------
