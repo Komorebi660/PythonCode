@@ -59,7 +59,7 @@ python NeuralStyleTransfer.py <content image path> <style image path> [result im
 - **CONTENT_WEIGHT**: 内容权重
 - **STYLE_WEIGHT**: 风格权重
 
-以调整最终图片的效果。
+以调整图片的最终效果。
 
 在运行过程中会打印当前使用`GPU`还是`CPU`：
 
