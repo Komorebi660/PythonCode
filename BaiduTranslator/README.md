@@ -21,7 +21,7 @@ sudo apt-get install python-tk
 sudo apt-get install python3-tk
 ```
 
-安装`tkinter`
+即可安装`tkinter`.
 
 接下来，进入源码`BaiduTranslator.py`，修改参数(**必选**)：
 
@@ -35,13 +35,7 @@ sudo apt-get install python3-tk
 
 ## 使用示例
 
-运行结果如下：
-
-![运行结果1](result1.png)
-
-![运行结果2](result2.png)
-
-运行时出现：
+若运行时出现：
 
 ```
 ERROR, Can not Translate now!
@@ -49,7 +43,15 @@ ERROR, Can not Translate now!
 出现异常，暂时无法翻译!
 ```
 
-原因是翻译结果没有正常返回，可能的原因是参数设置错误。
+原因是翻译结果没有正常返回，可能的原因是参数设置错误，正常的运行结果如下：
+
+<div align="center">
+<img src=./result1.png width=80%/>
+</div>
+
+<div align="center">
+<img src=./result2.png width=80%/>
+</div>
 
 在`Windows`环境下，你还可以将其打包为`.exe`文件，这样即使电脑不含`Python`也能运行，方法如下：
 
