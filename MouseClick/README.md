@@ -26,9 +26,11 @@ sudo apt-get install python3-tk
 
 直接运行代码:
 
-![GUI界面](GUI.png)
+<div align="center">
+<img src=./GUI.png width=50%/>
+</div>
 
-在上述GUI界面中设置点击鼠标左键或右键(`Mouse Button`)、点击时间间隔(`Time Interval`)，然后点击`START`开始监听，通过`F8`来控制连点的开始与结束，通过`ESC`来控制监听的结束。
+在上述`GUI`界面中设置点击鼠标左键或右键(`Mouse Button`)、点击时间间隔(`Time Interval`)，然后点击`START`开始监听，通过`F8`来控制连点的开始与结束，通过`ESC`来控制监听的结束。
 
 在`Windows`环境下，你还可以将其打包为`.exe`文件，这样即使电脑不含`Python`也能运行，方法如下：
 
