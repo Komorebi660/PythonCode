@@ -68,33 +68,33 @@ from DrawFractal import *
 ### Julia集
 
 <div align="center">
-<img src=./demo/Julia_im.gif width=60%/>
+<img src=./demo/Julia_im.gif width=40%/>
 </div>
 
 <div align="center">
-<img src=./demo/Julia_real.gif width=60%/>
+<img src=./demo/Julia_real.gif width=40%/>
 </div>
 
 <div align="center">
-<img src=./demo/julia.png width=90%/>
+<img src=./demo/julia.png width=80%/>
 </div>
 
 ### Mandelbrot集
 
 <div align="center">
-<img src=./demo/Mandelbrot.png width=90%/>
+<img src=./demo/Mandelbrot.png width=80%/>
 </div>
 
 ### 分形叶
 
 <div align="center">
-<img src=./demo/leaf_black.png width=70%>
+<img src=./demo/leaf_black.png width=50%>
 </div>
 
 ### Koch雪花
 
 <div align="center">
-<img src=./demo/koch.gif width=80%/>
+<img src=./demo/koch.gif width=60%/>
 </div>
 
 ## 代码使用
@@ -108,12 +108,12 @@ pip install matplotlib
 
 还需要使用其它`Python`自带库:
 
-- tkinter
-- time
-- threading
-- math
+- `tkinter`
+- `time`
+- `threading`
+- `math`
 
-接下来就可以运行`/test`文件夹下的所有文件或者`/src/GUI.py`来绘制图形，你也可以在新的`py`文件中导入`DrawFractal`使用更加完整且丰富的功能。
+接下来就可以运行`./test`文件夹下的所有文件或者`./src/GUI.py`来绘制分形图案，你也可以在新的`py`文件中导入`DrawFractal`使用更加完整且丰富的功能。
 
 `DrawFractal.py`中所有`draw_*`函数都是绘制图像的函数，详细说明见`src/FunctionScripts.md`.
 
