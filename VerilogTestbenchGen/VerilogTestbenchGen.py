@@ -2,16 +2,32 @@
 # coding=utf-8
 # Copyright © 2021 Komorebi660 All rights reserved.
 # ----------------------------------------------------------
+import sys
 
-WRITE_FILE_NAME = 'VerilogTestbenchGen/testbench_module.txt'
-READ_FILE_NAME = 'VerilogTestbenchGen/module_port.txt'
+# 用户可修改的参数
 TESTBENCH_MODULE_NAME = 'test_'
 INST_MODULE_NAME = 'inst_'
-
 LINE_LENTH_1 = 20
 LINE_LENTH_2 = 15
 LINE_LENTH_3 = 30
 
+# 从命令行获取文件名
+WRITE_FILE_NAME = ''
+READ_FILE_NAME = ''
+argv = sys.argv[1:]
+if(len(argv) < 2):
+    print("Too little parameters, the command should be like this:")
+    print("python VerilogTestbenchGen.py <input file name> <output file name>")
+    exit(-1)
+elif(len(argv) > 2):
+    print("Too much parameters, the command should be like this:")
+    print("python VerilogTestbenchGen.py <input file name> <output file name>")
+    exit(-1)
+else:
+    READ_FILE_NAME = argv[0]
+    WRITE_FILE_NAME = argv[1]
+
+# generate headers
 f_out = open(WRITE_FILE_NAME, 'w+')
 f_out.write('`timescale 1ns / 1ps \n')
 f_out.write('/*------------------------------------------------\n')

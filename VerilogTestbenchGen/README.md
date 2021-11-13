@@ -1,29 +1,29 @@
-## Verilog Testbench 自动生成器
+# Verilog Testbench 自动生成器
 
 **代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/18/VerilogTestbenchGen/)**
 
-`2021.8.24`更新：
+## 代码使用
 
-- 生成代码格式优化，更清晰；
-- 报错信息将指明出错行数，快速定位问题；
-- 生成信号部分增添了初始化内容.
+直接使用命令：
 
-### 代码使用
+```
+python VerilogTestbenchGen.py <input file name> <output file name>
+```
 
-首先，进入源码`VerilogTestbenchGen.py`，修改以下参数(可选)：
+即可运行，其中`input file name`为待生成`Testbench`的模块的路径；`output file name`为生成结果的路径。
 
-- **WRITE_FILE_NAME**：生成结果路径及文件名，默认为`VerilogTestbenchGen/testbench_module.txt`;
-- **READ_FILE_NAME**：待生成`Testbench`的模块的路径及文件名，默认为`VerilogTestbenchGen/module_port.txt`;
+除此以外，进入源码`VerilogTestbenchGen.py`，还可以选择性地修改以下参数：
+
 - **TESTBENCH_MODULE_NAME**：`Testbench`模块前缀名，默认为`test_`;
 - **INST_MODULE_NAME**：`Testbench`中例化模块的前缀名，默认为`inst_`;
 
-格式字符数目，如接口名称过长，可适当增大以下值：
+如接口名称过长(最终接口可能无法对齐)，还可适当增大以下值：
 
 - **LINE_LENTH_1**：默认为`20`;
 - **LINE_LENTH_2**：默认为`15`;
 - **LINE_LENTH_3**：默认为`30`;
 
-接下来，将待生成`Testbench`的模块接口定义放至`READ_FILE_NAME`对应文件下，注意：使用本代码对输入模块有一定要求:
+**注意，使用本代码对输入模块有一定要求:**
 
 - `(`后不能出现字符；
 - 模块结束的`);`需要单独成行；
@@ -41,11 +41,11 @@ module module_name(
 );
 ```
 
-将模块以合适的格式放至正确的文件中后，运行代码，结果会出现在`WRITE_FILE_NAME`对应文件中.
+将模块以合适的格式放至正确的文件中后，运行代码，结果会出现在你指定路径的文件中.
 
-### 测试样例及结果
+## 测试样例及结果
 
-使用默认参数进行设置，运行测试样例：
+运行仓库自带测试样例：
 
 **待例化模块：**
 
