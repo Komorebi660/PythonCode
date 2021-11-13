@@ -1,8 +1,8 @@
-## 基于百度翻译的本地化中英翻译器
+# 基于百度翻译的本地化中英翻译器
 
 **代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/22/BaiduTranslator/)**
 
-### 代码使用
+## 代码使用
 
 安装依赖库：
 
@@ -29,15 +29,27 @@ sudo apt-get install python3-tk
 - **COOKIE**：位于`Request Headers`中的`Cookie`;
 - **TOKEN**：位于`From Data`中的`token`.
 
-进入[百度翻译](https://fanyi.baidu.com/), 打开浏览器的开发者工具，在`Request URL`为`https://fanyi.baidu.com/v2transapi`处获取.
+进入[百度翻译](https://fanyi.baidu.com/), 按`F12`打开浏览器的开发者工具，在`Request URL`为`https://fanyi.baidu.com/v2transapi`处可以获取上述参数.
 
-### 使用示例
+**注意：最新的百度翻译可能需要登录百度账号才可以使用，建议先登录百度账号再抓取有关内容。**
+
+## 使用示例
 
 运行结果如下：
 
 ![运行结果1](result1.png)
 
 ![运行结果2](result2.png)
+
+运行时出现：
+
+```
+ERROR, Can not Translate now!
+或
+出现异常，暂时无法翻译!
+```
+
+原因是翻译结果没有正常返回，可能的原因是参数设置错误。
 
 在`Windows`环境下，你还可以将其打包为`.exe`文件，这样即使电脑不含`Python`也能运行，方法如下：
 

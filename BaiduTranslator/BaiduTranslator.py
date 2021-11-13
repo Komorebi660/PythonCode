@@ -7,8 +7,9 @@ import js2py
 import requests
 import re
 from tkinter import *
+import ctypes
 
-# 以下内容请自行抓包获取
+# 以下内容请自行抓包获取，注意需要可能需要登录百度账号再获取有关信息
 USER_AGENT = ''
 COOKIE = ''
 TOKEN = ''
@@ -27,7 +28,7 @@ class BaiDuTranslator:
             'to': '',
             'query': self.query,
             'simple_means_flag': 3,
-            'transtype': 'enter',
+            'transtype': 'translang',
             'sign': '',
             'token': TOKEN,
             'domain': 'common'
@@ -110,18 +111,23 @@ class BaiDuTranslator:
         self.data['from'] = 'en'
         self.data['to'] = 'zh'
         # 发送翻译请求
-        response = requests.Session().post(
-            self.url, data=self.data, headers=self.headers).json()
+        response = requests.Session().post(self.url,
+                                           data=self.data,
+                                           headers=self.headers).json()
         # 解析数据
-        result_array = response['trans_result']['data']
-        result = ''
-        for i in range(0, len(result_array)):
-            for j in range(0, len(result_array[i]['result'])):
-                result += result_array[i]['result'][j][1]
-            result += '\n'
-        # 输出
-        output.delete('0.0', END)
-        output.insert(INSERT, result)
+        try:
+            result_array = response['trans_result']['data']
+            result = ''
+            for i in range(0, len(result_array)):
+                for j in range(0, len(result_array[i]['result'])):
+                    result += result_array[i]['result'][j][1]
+                result += '\n'
+            # 输出
+            output.delete('0.0', END)
+            output.insert(INSERT, result)
+        except:
+            output.delete('0.0', END)
+            output.insert(INSERT, "ERROR, Can not Translate now!")
 
     def Translate_From_zh_To_en(self):
         # 首先获取sign
@@ -130,77 +136,115 @@ class BaiDuTranslator:
         self.data['from'] = 'zh'
         self.data['to'] = 'en'
         # 发送翻译请求
-        response = requests.Session().post(
-            self.url, data=self.data, headers=self.headers).json()
+        response = requests.Session().post(self.url,
+                                           data=self.data,
+                                           headers=self.headers).json()
         # 解析数据
-        result_array = response['trans_result']['data']
-        result = ''
-        for i in range(0, len(result_array)):
-            for j in range(0, len(result_array[i]['result'])):
-                result += result_array[i]['result'][j][1]
-            result += '\n'
-        # 输出
-        output.delete('0.0', END)
-        output.insert(INSERT, result)
-
-
-TEXT = 'Welcome to use Translator. Powered by Baidu Translator.\n欢迎使用翻译器，由百度翻译提供技术支持'
-REMINDER_EN = 'Waiting to response......'
-REMINDER_ZH = '等待响应中......'
+        try:
+            result_array = response['trans_result']['data']
+            result = ''
+            for i in range(0, len(result_array)):
+                for j in range(0, len(result_array[i]['result'])):
+                    result += result_array[i]['result'][j][1]
+                result += '\n'
+            # 输出
+            output.delete('0.0', END)
+            output.insert(INSERT, result)
+        except:
+            output.delete('0.0', END)
+            output.insert(INSERT, "出现异常，暂时无法翻译!")
 
 
 def getrans_zh_to_en():
     word = input.get('0.0', END)
-    Trans = BaiDuTranslator(word)
-    output.delete('0.0', END)
-    output.insert(INSERT, str(REMINDER_ZH))
-    root.update()
-    Trans.Translate_From_zh_To_en()
+    temp = word.replace('\n', '')
+    if len(temp) == 0:
+        output.delete('0.0', END)
+        output.insert(INSERT, "请输入至少一个词语。")
+    else:
+        Trans = BaiDuTranslator(word)
+        output.delete('0.0', END)
+        output.insert(INSERT, '等待响应中......')
+        btn_zh_to_en['state'] = DISABLED
+        btn_en_to_zh['state'] = DISABLED
+        root.update()
+        Trans.Translate_From_zh_To_en()
+        btn_zh_to_en['state'] = NORMAL
+        btn_en_to_zh['state'] = NORMAL
 
 
 def getrans_en_to_zh():
     word = input.get('0.0', END)
-    Trans = BaiDuTranslator(word)
-    output.delete('0.0', END)
-    output.insert(INSERT, str(REMINDER_EN))
-    root.update()
-    Trans.Translate_From_en_To_zh()
+    temp = word.replace('\n', '')
+    if len(temp) == 0:
+        output.delete('0.0', END)
+        output.insert(INSERT, "You should input at least one word.")
+    else:
+        Trans = BaiDuTranslator(word)
+        output.delete('0.0', END)
+        output.insert(INSERT, 'Waiting to response......')
+        btn_zh_to_en['state'] = DISABLED
+        btn_en_to_zh['state'] = DISABLED
+        root.update()
+        Trans.Translate_From_en_To_zh()
+        btn_zh_to_en['state'] = NORMAL
+        btn_en_to_zh['state'] = NORMAL
 
 
 def flush():
     input.delete('0.0', END)
     output.delete('0.0', END)
+    btn_zh_to_en['state'] = NORMAL
+    btn_en_to_zh['state'] = NORMAL
 
 
+# -------------------------------- GUI界面 --------------------------------
 root = Tk()
+# 高dpi
+ctypes.windll.shcore.SetProcessDpiAwareness(1)
+ScaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0)
+root.tk.call('tk', 'scaling', ScaleFactor/75)
+
 root.title('Translator')
 root.geometry('1000x600')
 
-header = Label(root, text=TEXT, font=("微软雅黑", 11, "bold"))
-header.place(relx=0.1, y=5, relwidth=0.8, height=50)
+lab1 = Label(root, text='INPUT', font=("Helvetica", 10))
+lab1.place(relx=0.15, y=20, relwidth=0.2, height=20)
 
-lab1 = Label(root, text='INPUT\n输入', font=("微软雅黑", 9))
-lab1.place(relx=0.15, y=50, relwidth=0.2, height=40)
+lab2 = Label(root, text='OUTPUT', fg="gray", font=("Helvetica", 10))
+lab2.place(relx=0.65, y=20, relwidth=0.2, height=20)
 
-lab2 = Label(root, text='OUTPUT\n输出', fg="gray", font=("微软雅黑", 9))
-lab2.place(relx=0.65, y=50, relwidth=0.2, height=40)
+input = Text(root, relief="flat", font=("微软雅黑", 10))
+input.place(relx=0.05, y=50, relwidth=0.4, relheight=0.85)
 
-input = Text(root, font=("微软雅黑", 10))
-input.place(relx=0.05, y=90, relwidth=0.4, relheight=0.8)
+output = Text(root, fg="gray", relief="flat", font=("微软雅黑", 10))
+output.place(relx=0.55, y=50, relwidth=0.4, relheight=0.85)
 
-output = Text(root, fg="gray", font=("微软雅黑", 10))
-output.place(relx=0.55, y=90, relwidth=0.4, relheight=0.8)
+btn_zh_to_en = Button(root,
+                      text='ZH-->EN',
+                      font=("Helvetica", 10),
+                      fg="white",
+                      bg="#207fdf",
+                      relief="flat",
+                      command=getrans_zh_to_en)
+btn_zh_to_en.place(relx=0.46, rely=0.25, relwidth=0.08, height=30)
 
-btn_zh_to_en = Button(root, text='ZH-->EN', font=("微软雅黑", 10),
-                      fg="white", bg="gray", command=getrans_zh_to_en)
-btn_zh_to_en.place(relx=0.46, rely=0.29, relwidth=0.08, height=20)
+btn_en_to_zh = Button(root,
+                      text='EN-->ZH',
+                      font=("Helvetica", 10),
+                      fg="white",
+                      bg="#207fdf",
+                      relief="flat",
+                      command=getrans_en_to_zh)
+btn_en_to_zh.place(relx=0.46, rely=0.48, relwidth=0.08, height=30)
 
-btn_zh_to_en = Button(root, text='EN-->ZH', font=("微软雅黑", 10),
-                      fg="white", bg="gray", command=getrans_en_to_zh)
-btn_zh_to_en.place(relx=0.46, rely=0.51, relwidth=0.08, height=20)
-
-btn_flush = Button(root, text='FLUSH', font=(
-    "微软雅黑", 10), fg="red", command=flush)
-btn_flush.place(relx=0.46, rely=0.75, relwidth=0.08, height=20)
+btn_flush = Button(root,
+                   text='FLUSH',
+                   font=("Helvetica", 10),
+                   fg="red",
+                   relief="flat",
+                   command=flush)
+btn_flush.place(relx=0.46, rely=0.70, relwidth=0.08, height=30)
 
 root.mainloop()
+# -------------------------------- GUI界面 --------------------------------
