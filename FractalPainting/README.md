@@ -99,8 +99,6 @@ from DrawFractal import *
 
 ## 代码使用
 
-**本代码在 Windows10 Python3.9 的环境上运行测试通过**
-
 安装相关库：
 
 ```

@@ -211,7 +211,7 @@ def update3(event):
 
 root = Tk()
 root.title('Fractal Painting')
-root.geometry('880x1000')
+root.geometry('800x900')
 root.protocol('WM_DELETE_WINDOW', close)  # 覆盖"x"按钮
 
 figure = pl.gcf()
@@ -223,14 +223,15 @@ pl.switch_backend('agg')  # 解决 not in main thread 问题
 # 放置初始化图像
 canvas = FigureCanvasTkAgg(figure, master=root)
 canvas.draw()
-canvas.get_tk_widget().place(relx=0.1, y=230, relwidth=0.8, relheight=0.75)
+canvas.get_tk_widget().place(relx=0.1, y=230, relwidth=0.8, relheight=0.72)
 
 
 #--------------------------- "图片格式"控件 ---------------------------#
 Var_format = StringVar()
 lab1 = Label(root, text='图片格式：', font=("微软雅黑", 11))
 lab1.place(relx=0.2, y=20, relwidth=0.1, height=30)
-sel1 = ttk.Combobox(root, textvariable=Var_format,
+sel1 = ttk.Combobox(root,
+                    textvariable=Var_format,
                     font=("微软雅黑", 11))
 sel1['value'] = ('静态图片', '动态图片')
 sel1.current(0)  # 设置初始值
@@ -241,21 +242,25 @@ sel1.place(relx=0.3, y=20, relwidth=0.2, height=30)
 Var_quality = StringVar()
 lab2 = Label(root, text='画质选择：', font=("微软雅黑", 11))
 lab2.place(relx=0.2, y=60, relwidth=0.1, height=30)
-sel2 = ttk.Combobox(root, textvariable=Var_quality,
+sel2 = ttk.Combobox(root,
+                    textvariable=Var_quality,
                     font=("微软雅黑", 11))
 sel2['value'] = ('速度优先', '均衡', '画质优先')
 sel2.current(1)  # 设置初始值
 sel2.bind('<<ComboboxSelected>>', update2)  # 绑定更新事件
 sel2.place(relx=0.3, y=60, relwidth=0.2, height=30)
-comment2 = Label(root, text='预计运行时间 < 4s',
-                 font=("微软雅黑", 10), fg="gray")
+comment2 = Label(root,
+                 text='预计运行时间 < 4s',
+                 font=("微软雅黑", 10),
+                 fg="gray")
 comment2.place(relx=0.51, y=62, relwidth=0.2, height=25)
 #--------------------------- "画质选择"控件 ---------------------------#
 #--------------------------- "图片内容"控件 ---------------------------#
 Var_content = StringVar()
 lab3 = Label(root, text='图片内容：', font=("微软雅黑", 11))
 lab3.place(relx=0.2, y=100, relwidth=0.1, height=30)
-sel3 = ttk.Combobox(root, textvariable=Var_content,
+sel3 = ttk.Combobox(root,
+                    textvariable=Var_content,
                     font=("微软雅黑", 11))
 sel3['value'] = ('曼德勃罗集', '朱丽叶集', '分形叶', '科赫雪花', '分形龙',
                  '谢尔宾斯基三角', '分形树', '希尔伯特曲线', '谢尔宾斯基正方形')
@@ -264,13 +269,23 @@ sel3.bind('<<ComboboxSelected>>', update3)  # 绑定更新事件
 sel3.place(relx=0.3, y=100, relwidth=0.2, height=30)
 #--------------------------- "图片内容"控件 ---------------------------#
 #----------------------------- "开始"按钮 -----------------------------#
-btn_start = Button(root, text='开始', font=("微软雅黑", 12),
-                   fg="red", command=start)
+btn_start = Button(root,
+                   text='开始',
+                   relief="flat",
+                   font=("微软雅黑", 12),
+                   fg="white",
+                   bg='#207fdf',
+                   command=start)
 btn_start.place(relx=0.2, y=150, relwidth=0.25, height=30)
 #----------------------------- "开始"按钮 -----------------------------#
 #----------------------------- "保存"按钮 -----------------------------#
-btn_save = Button(root, text='保存', font=("微软雅黑", 12),
-                  fg="blue", command=save)
+btn_save = Button(root,
+                  text='保存',
+                  relief="flat",
+                  font=("微软雅黑", 12),
+                  fg="white",
+                  bg='#207fdf',
+                  command=save)
 btn_save.place(relx=0.55, y=150, relwidth=0.25, height=30)
 #----------------------------- "保存"按钮 -----------------------------#
 #------------------------------ 状态显示 ------------------------------#
