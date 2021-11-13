@@ -8,6 +8,7 @@ import threading
 import pynput.mouse  # pynput和tkinter都有Button这个包，注意区分
 from pynput.keyboard import Key, Listener
 from tkinter import *
+import ctypes
 
 LEFT = 0
 RIGHT = 1
@@ -92,33 +93,52 @@ def start():
 
 # -------------------------------- GUI界面 --------------------------------
 root = Tk()
+# 高dpi
+ctypes.windll.shcore.SetProcessDpiAwareness(1)
+ScaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0)
+root.tk.call('tk', 'scaling', ScaleFactor/75)
+
 root.title('Mouse Clicker')
-root.geometry('400x290')
+root.geometry('450x300')
 
 mouse = IntVar()
 lab1 = Label(root, text='Mouse Button', font=("微软雅黑", 11), fg="gray")
 lab1.place(relx=0.05, y=10, relwidth=0.4, height=30)
-r1 = Radiobutton(root, text='LEFT', font=("微软雅黑", 10), value=0, variable=mouse)
+r1 = Radiobutton(root,
+                 text='LEFT',
+                 font=("微软雅黑", 10),
+                 value=0,
+                 variable=mouse)
 r1.place(relx=0.05, y=40, relwidth=0.15, height=30)
-r2 = Radiobutton(root, text='RIGHT', font=(
-    "微软雅黑", 10), value=1, variable=mouse)
+r2 = Radiobutton(root,
+                 text='RIGHT',
+                 font=("微软雅黑", 10),
+                 value=1,
+                 variable=mouse)
 r2.place(relx=0.2, y=40, relwidth=0.3, height=30)
 
 lab2 = Label(root, text='Time Interval', font=("微软雅黑", 11), fg="gray")
 lab2.place(relx=0.55, y=10, relwidth=0.4, height=30)
-input = Entry(root, font=("微软雅黑", 10))
+input = Entry(root, relief="flat", font=("微软雅黑", 10))
 input.place(relx=0.55, y=40, relwidth=0.4, height=30)
 
-label3 = Label(root, text='---------- Current State and Instruction ----------',
-               font=("微软雅黑", 8), fg="gray")
+label3 = Label(root,
+               text='---------- Current State and Instruction ----------',
+               font=("微软雅黑", 8),
+               fg="gray")
 label3.place(relx=0.05, y=90, relwidth=0.9, height=20)
-state = Text(root, font=("微软雅黑", 10))
+state = Text(root, relief="flat", font=("微软雅黑", 10))
 state.place(relx=0.05, y=110, relwidth=0.9, height=120)
 state.insert(INSERT, "Current State: IDLE\n")
-state.insert(INSERT, "Choose which mouse button you want to click and set the time interval, then click START button to start clicking.")
+state.insert(INSERT, "Choose which mouse button you want to click and set the time interval, then click START button to start listening.")
 
-btn_start = Button(root, text='START', font=("微软雅黑", 12),
-                   fg="white", bg="gray", command=start)
+btn_start = Button(root,
+                   text='START',
+                   font=("微软雅黑", 12),
+                   fg="white",
+                   bg="#207fdf",
+                   relief="flat",
+                   command=start)
 btn_start.place(relx=0.3, y=240, relwidth=0.4, height=30)
 
 root.mainloop()

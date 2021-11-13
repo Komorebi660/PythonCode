@@ -1,10 +1,8 @@
-## 简易鼠标连点器
+# 简易鼠标连点器
 
 **代码介绍见[我的Blog](https://komorebi660.github.io/2021/09/04/MouseClick/)**
 
-**注意：本代码在`Linux`环境运行出现异常，目前暂不清楚原因，在`Windows10`下运行正常**
-
-### 安装依赖库
+## 安装依赖库
 
 安装代码所需库：
 
@@ -24,7 +22,7 @@ sudo apt-get install python3-tk
 
 安装`tkinter`
 
-### 使用示例
+## 使用示例
 
 直接运行代码:
 
