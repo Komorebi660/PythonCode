@@ -5,6 +5,7 @@
 
 import requests
 import re
+import datetime
 from requests.sessions import session
 requests.packages.urllib3.disable_warnings()
 
@@ -58,6 +59,7 @@ if (len(token_temp) == 0):
 _token = token_temp[0]
 # print(token)
 
+
 #Step3: 上报
 post_url = 'https://weixine.ustc.edu.cn/2020/daliy_report'
 post_data = {
@@ -95,3 +97,24 @@ if (len(alert) == 0):
     exit(0)
 else:
     print(alert[0])
+
+
+# Step5: 出校报备
+curr_date = datetime.datetime.now().strftime("%Y-%m-%d")
+next_date = (datetime.datetime.now() +
+             datetime.timedelta(days=6)).strftime("%Y-%m-%d")
+report_url = 'https://weixine.ustc.edu.cn/2020/apply/daliy/post'
+report_data = {
+    '_token': _token,
+    'start_date': curr_date,
+    'end_date': next_date
+}
+report_res = session.post(report_url, data=report_data)
+report_html = report_res.content.decode('utf-8')
+report_alert = re.findall(
+    '(?<=<p class="alert alert-success">)(.*?)(?=<a)', report_html)
+if (len(report_alert) == 0):
+    print("Out of School Report ERROR!")
+    exit(0)
+else:
+    print(report_alert[0])

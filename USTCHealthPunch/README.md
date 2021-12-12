@@ -2,6 +2,8 @@
 
 **代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/20/USTCHealthPunch/)**
 
+**2021年12月更新：新增自动出校报备**
+
 ## 安装依赖库
 
 安装代码所需库：
@@ -10,7 +12,7 @@
 pip install requests
 ```
 
-`re`、`io`库为`Python`自带库，无需手动安装。
+`re`、`io`、`datetime`为`Python`自带库，无需手动安装。
 
 ## 修改参数
 
@@ -28,10 +30,11 @@ pip install requests
 若出现
 
 ```
-上报成功，最近一次上报是*分钟*秒之前，请每日按时打卡 
+上报成功，最近一次上报是*分钟*秒之前，请每日按时打卡
+报备成功，门禁权限将在稍后生效  
 ```
 
-则表明成功打卡。
+则表明成功打卡、报备。
 
 若出现
 
@@ -45,9 +48,11 @@ UserName or Password ERROR!
 
 ```
 Health Punch ERROR!
+或
+Out of School Report ERROR!
 ```
 
-则表明上报失败，原因可能是打卡网站进行了更新，需要重新修改代码。
+则表明上报或报备失败，原因可能是打卡网站进行了更新，需要重新修改代码。
 
 ## 上传至`Vlab`定时执行
 
@@ -84,4 +89,3 @@ service cron restart
 ```
 
 接下来就能解放双手自动打卡了~
-
