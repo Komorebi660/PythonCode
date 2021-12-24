@@ -1,8 +1,6 @@
-# 肥科自动健康打卡脚本
+# 肥科自动健康打卡&出校报备脚本
 
 **代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/20/USTCHealthPunch/)**
-
-**2021年12月更新：新增自动出校报备**
 
 ## 安装依赖库
 
@@ -16,7 +14,7 @@ pip install requests
 
 ## 修改参数
 
-接下来，进入源码文件`USTCHealthPunch.py`，修改如下参数(**必选**):
+接下来，进入源码文件`USTC.py`，修改如下参数(**必选**):
 
 - **USR**：学号
 - **PWD**：密码
@@ -77,7 +75,7 @@ sudo crontab -e
 
 例如：
 ```
-* 21 * * * /usr/bin/python3 /home/ubuntu/USTCHealthPunc.py
+* 21 * * * /usr/bin/python3 /home/ubuntu/USTC.py
 ```
 
 就是每天`21：00`执行位于`/home/ubuntu/`下的`USTCHealthPunch.py`文件
