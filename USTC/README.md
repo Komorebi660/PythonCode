@@ -45,7 +45,7 @@ UserName or Password ERROR!
 若出现
 
 ```
-Health Punch ERROR!
+Health Check-in ERROR!
 或
 Out of School Report ERROR!
 ```

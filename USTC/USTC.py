@@ -93,7 +93,7 @@ res = session.post(post_url, data=post_data)
 html = res.content.decode('utf-8')
 alert = re.findall('(?<=<p class="alert alert-success">)(.*?)(?=<a)', html)
 if (len(alert) == 0):
-    print("Health Punch ERROR!")
+    print("Health Check-in ERROR!")
     exit(0)
 else:
     print(alert[0])
