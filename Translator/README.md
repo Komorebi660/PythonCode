@@ -1,6 +1,6 @@
 # 基于百度翻译的本地化中英翻译器
 
-**代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/22/BaiduTranslator/)**
+**代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/22/Translator/)**
 
 ## 代码使用
 

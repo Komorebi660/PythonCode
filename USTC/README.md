@@ -1,6 +1,6 @@
 # 肥科自动健康打卡&出校报备脚本
 
-**代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/20/USTCHealthPunch/)**
+**代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/20/USTC/)**
 
 ## 安装依赖库
 
