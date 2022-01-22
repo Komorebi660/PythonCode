@@ -1,17 +1,17 @@
-## 基于Pyhton的小程序
+# 基于Pyhton的小程序
 
 本仓库代码基于的环境如下：
 
 - `Windows 10`及以上版本
 - `Python 3.9.5`及以上版本
 
-### 内容简介
+## 内容简介
 
 - [ASCIIArt](./ASCIIArt/README.md)
 
 图片转字符画
 
-- [FractalPainting]
+- [FractalPainting](./FractalPainting/README.md)
 
 分形图绘制
 
