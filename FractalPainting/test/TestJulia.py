@@ -22,6 +22,7 @@ def draw_Julia_(n, c=0.400):
 for i in range(1, 7):
     pl.subplot(230+i)
     draw_Julia_(i+1, C[i-1])
+
 # 保存
 pl.savefig("./julia.png", bbox_inches='tight', dpi=2048, pad_inches=0.0)
 print("Done!")

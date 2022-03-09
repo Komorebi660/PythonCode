@@ -172,6 +172,10 @@ def draw_Mandelbrot_(n=2, cx=0.0, cy=0.0, d=1.5):
     mandelbrot = get_Mandelbrot(x0, x1, y0, y1, 256, n)
     pl.imshow(mandelbrot, cmap=cm.jet, extent=[x0, x1, y0, y1])
     pl.gca().set_axis_off()
+    # 去除白边
+    pl.gca().xaxis.set_major_locator(pl.NullLocator())
+    pl.gca().yaxis.set_major_locator(pl.NullLocator())
+    pl.subplots_adjust(top=1, bottom=0, left=0, right=1, hspace=0, wspace=0)
 
 
 # 生成分形树叶(x,y)坐标
@@ -348,3 +352,46 @@ def draw_Square(n=14):
     pl.gca().xaxis.set_major_locator(pl.NullLocator())
     pl.gca().yaxis.set_major_locator(pl.NullLocator())
     pl.subplots_adjust(top=1, bottom=0, left=0, right=1, hspace=0, wspace=0)
+
+
+CONTENT = {
+    'Mandelbrot': [draw_Mandelbrot, 0],
+    'Julia': [draw_Julia, 1],
+    'Leaf': [draw_Leaf, 2],
+    'Koch': [draw_Koch, 3],
+    'Dragon': [draw_Dragon, 4],
+    'Triangle': [draw_Triangle, 5],
+    'Tree': [draw_Plant, 6],
+    'Hilbert': [draw_Hilbert, 7],
+    'Square': [draw_Square, 8],
+    'Julia(R)': [draw_Julia_1, 9],
+    'Julia(I)': [draw_Julia_2, 10],
+}
+
+QUALITY = [400, 1024, 100000, 9, 18, 12, 9, 7, 14]
+
+ITERATION = {
+    'Mandelbrot': np.arange(2, 4.2, 0.2),
+    'Leaf': np.arange(10000, 100000, 20000),
+    'Koch': np.arange(1, 8, 1),
+    'Dragon': np.arange(5, 18, 1),
+    'Triangle': np.arange(4, 12, 2),
+    'Tree': np.arange(1, 9, 1),
+    'Hilbert': np.arange(1, 8, 1),
+    'Square': np.arange(1, 14, 1),
+    'Julia(R)':  np.arange(-1.0, 1.1, 0.1),
+    'Julia(I)': np.arange(-1.0, 1.1, 0.1)
+}
+
+GIF_TIME = {
+    'Mandelbrot': 22,
+    'Leaf': 10,
+    'Koch': 5,
+    'Dragon': 10,
+    'Triangle': 5,
+    'Tree': 7,
+    'Hilbert': 5,
+    'Square': 8,
+    'Julia(R)': 30,
+    'Julia(I)': 28
+}

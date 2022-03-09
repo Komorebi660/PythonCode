@@ -7,30 +7,20 @@
 
 ## 内容简介
 
-- [ASCIIArt](./ASCIIArt/README.md)
+- [图片转字符画](./ASCIIArt/README.md)
+- [分形图绘制](./FractalPainting/README.md)
+- [鼠标连点器](./MouseClick/README.md)
+- [神经网络图像风格迁移](./NeuralStyleTransfer/README.md)
+- [在线翻译中英翻译器](./Translator/README.md)
+- [中国科学技术大学自动健康打卡脚本](./USTC/README.md)
+- [`Verilog Testbench`自动生成器](./VerilogTestbenchGen/README.md)
 
-图片转字符画
+## 代码使用
 
-- [FractalPainting](./FractalPainting/README.md)
+下载源码到本地:
 
-分形图绘制
+```
+git clone git@github.com:Komorebi660/PythonCode.git
+```
 
-- [MouseClick](./MouseClick/README.md)
-
-鼠标连点器
-
-- [NeuralStyleTransfer](./NeuralStyleTransfer/README.md)
-
-神经网络图像风格迁移
-
-- [Translator](./Translator/README.md)
-
-在线翻译中英翻译器
-
-- [USTC](./USTC/README.md)
-
-中国科学技术大学自动健康打卡脚本
-
-- [VerilogTestbenchGen](./VerilogTestbenchGen/README.md)
-
-`Verilog Testbench`自动生成器
+进入任意仓库, 按照要求安装好第三方库后使用`Python`命令即可运行。
