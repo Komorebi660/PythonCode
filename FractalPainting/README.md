@@ -62,7 +62,7 @@ from DrawFractal import *
 `src/GUI.py`则提供了一种对`DrawFractal.py`的封装，它简化了一些参数以获得更好的人机交互体验。运行该文件，你可以使用鼠标选择控件来绘制静态图片以及动态图片。
 
 <div align="center">
-<img src=./demo/demo.png width=70%/>
+<img src=./demo/demo.png width=50%/>
 </div>
 
 `/test`文件夹中的文件则是对`DrawFractal.py`直接调用的示例，它使用了更多的参数，这样能绘制更为丰富的图像。

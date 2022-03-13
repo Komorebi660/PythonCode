@@ -258,7 +258,7 @@ def Home():
                    font=("Helvetica", 25, "bold"))
     label1.place(x=0, rely=0.02, relwidth=1, relheight=0.12)
     label2 = Label(sidebar,
-                   text="Copyright 2022 Yaoqi Chen",
+                   text="Copyright 2022 Komorebi660",
                    bg='#F5F5F5',
                    fg="#A0A0A0",
                    font=("Helvetica", 10))
