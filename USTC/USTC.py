@@ -9,17 +9,10 @@ import datetime
 from requests.sessions import session
 requests.packages.urllib3.disable_warnings()
 
-EAST = 2  # 东校区
-SOUTH = 3  # 南校区
-MIDDLE = 4  # 中区
-NORTH = 5  # 北区
-WEST = 6  # 西区
-OUT_CAMPUS = 0  # 校外
-
 # ------ 用户在运行前需更改的变量 ------ #
 USR = ''  # 学号
 PWD = ''  # 密码
-LOCATION = WEST  # 所在校区
+LOCATION = ''  # 所在校区, 用中文表示
 EMERGENCY_CONTACT = ''  # 紧急联系人姓名
 RELATIONSHIP = ''  # 本人与紧急联系人关系
 PHONE_NUMBER = ''  # 紧急联系人电话
@@ -64,16 +57,7 @@ _token = token_temp[0]
 post_url = 'https://weixine.ustc.edu.cn/2020/daliy_report'
 post_data = {
     '_token': _token,
-    'now_address': '1',
-    'gps_now_address': '',
-    'now_province': '340000',
-    'gps_province': '',
-    'now_city': '340100',
-    'gps_city': '',
-    'now_country': '340104',
-    'gps_country': '',
-    'now_detail': '',
-    'is_inschool': LOCATION,
+    'juzhudi': LOCATION,
     'body_condition': '1',
     'body_condition_detail': '',
     'now_status': '1',
@@ -99,15 +83,19 @@ else:
     print(alert[0])
 
 
-# Step5: 出校报备
-curr_date = datetime.datetime.now().strftime("%Y-%m-%d")
+# Step4: 出校报备
+curr_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 next_date = (datetime.datetime.now() +
-             datetime.timedelta(days=6)).strftime("%Y-%m-%d")
+             datetime.timedelta(days=1)).strftime("%Y-%m-%d")+" 23:59:59"
 report_url = 'https://weixine.ustc.edu.cn/2020/apply/daliy/post'
 report_data = {
     '_token': _token,
     'start_date': curr_date,
-    'end_date': next_date
+    'end_date': next_date,
+    'return_college[]': '东校区',
+    'return_college[]': '西校区',
+    'return_college[]': '高新校区',  # 可设置跨哪些校区
+    't': '23'
 }
 report_res = session.post(report_url, data=report_data)
 report_html = report_res.content.decode('utf-8')
