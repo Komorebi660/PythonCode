@@ -85,8 +85,7 @@ else:
 
 # Step4: 出校报备
 curr_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-next_date = (datetime.datetime.now() +
-             datetime.timedelta(days=1)).strftime("%Y-%m-%d")+" 23:59:59"
+next_date = datetime.datetime.now()+" 23:59:59"
 report_url = 'https://weixine.ustc.edu.cn/2020/apply/daliy/post'
 report_data = {
     '_token': _token,
@@ -94,8 +93,8 @@ report_data = {
     'end_date': next_date,
     'return_college[]': '东校区',
     'return_college[]': '西校区',
-    'return_college[]': '高新校区',  # 可设置跨哪些校区
-    't': '23'
+    'return_college[]': '中校区',  # 可设置跨哪些校区
+    't': '3'
 }
 report_res = session.post(report_url, data=report_data)
 report_html = report_res.content.decode('utf-8')
