@@ -85,7 +85,7 @@ else:
 
 # Step4: 出校报备
 curr_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-next_date = datetime.datetime.now()+" 23:59:59"
+next_date = datetime.datetime.now().strftime("%Y-%m-%d") + " 23:59:59"
 report_url = 'https://weixine.ustc.edu.cn/2020/apply/daliy/post'
 report_data = {
     '_token': _token,
