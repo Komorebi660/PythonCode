@@ -19,6 +19,8 @@ pip install requests
 - **USR**：学号
 - **PWD**：密码
 - **LOCATION**：所在校区
+- **DORM_BUILDING**：寝室楼号
+- **DORM**：寝室门牌号
 - **EMERGENCY_CONTACT**：紧急联系人姓名
 - **RELATIONSHIP**：本人与紧急联系人关系
 - **PHONE_NUMBER**：紧急联系人电话

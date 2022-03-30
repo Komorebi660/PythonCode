@@ -13,6 +13,8 @@ requests.packages.urllib3.disable_warnings()
 USR = ''  # 学号
 PWD = ''  # 密码
 LOCATION = ''  # 所在校区, 用中文表示
+DORM_BUILDING = ''  # 寝室楼号
+DORM = ''  # 寝室门牌号
 EMERGENCY_CONTACT = ''  # 紧急联系人姓名
 RELATIONSHIP = ''  # 本人与紧急联系人关系
 PHONE_NUMBER = ''  # 紧急联系人电话
@@ -58,6 +60,8 @@ post_url = 'https://weixine.ustc.edu.cn/2020/daliy_report'
 post_data = {
     '_token': _token,
     'juzhudi': LOCATION,
+    'dorm_building': DORM_BUILDING,
+    'dorm': DORM,
     'body_condition': '1',
     'body_condition_detail': '',
     'now_status': '1',
