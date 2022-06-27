@@ -1,6 +1,6 @@
 # 简易鼠标连点器
 
-**代码介绍见[我的Blog](https://komorebi660.github.io/2021/09/04/MouseClick/)**
+**代码介绍见[此](https://zhuanlan.zhihu.com/p/413878810)**
 
 ## 安装依赖库
 

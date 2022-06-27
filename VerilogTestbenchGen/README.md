@@ -1,6 +1,6 @@
 # Verilog Testbench 自动生成器
 
-**代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/18/VerilogTestbenchGen/)**
+**代码介绍见[此](https://zhuanlan.zhihu.com/p/413868736)**
 
 ## 代码使用
 

@@ -1,7 +1,5 @@
 # 基于百度翻译的本地化中英翻译器
 
-**代码介绍见[我的Blog](https://komorebi660.github.io/2021/08/22/Translator/)**
-
 ## 代码使用
 
 安装依赖库：
@@ -10,8 +8,6 @@
 pip install requests
 pip install js2py
 ```
-
-`re`、`tkinter`库为`Python`自带库，无需手动安装。
 
 Linux环境可能没有安装`tkinter`库，输入：
 
