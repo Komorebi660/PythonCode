@@ -1,6 +1,6 @@
 # ----------------------------------------------------------
 # coding=utf-8
-# Copyright © 2021 Komorebi660 All rights reserved.
+# Copyright © 2022 Komorebi660 All rights reserved.
 # ----------------------------------------------------------
 
 import js2py
