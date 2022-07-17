@@ -14,6 +14,7 @@
 - [在线翻译中英翻译器](./Translator/README.md)
 - [中国科学技术大学自动健康打卡脚本](./USTC/README.md)
 - [`Verilog Testbench`自动生成器](./VerilogTestbenchGen/README.md)
+- [`MySQL`客户端框架](./MySQLClient/README.md)
 
 ## 代码使用
 
@@ -23,4 +24,4 @@
 git clone git@github.com:Komorebi660/PythonCode.git
 ```
 
-进入任意仓库, 按照要求安装好第三方库后使用`Python`命令即可运行。
+进入任意子文件夹, 按照其中的`README`安装好第三方库后使用`Python`命令即可运行。
