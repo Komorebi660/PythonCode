@@ -3,7 +3,7 @@
 # Copyright © 2021 Komorebi660 All rights reserved.
 # THIS FILE IS USED TO TEST PAINTING MANDELBROT SET
 # ----------------------------------------------------------
-from DrawFractal import *
+from src.DrawFractal import *
 
 # 绘制曼德勃罗集
 pl.subplot(231)

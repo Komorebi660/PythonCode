@@ -3,7 +3,7 @@
 # Copyright © 2021 Komorebi660 All rights reserved.
 # THIS FILE IS USED TO TEST PAINTING LEAF
 # ----------------------------------------------------------
-from DrawFractal import *
+from src.DrawFractal import *
 
 pl.figure(figsize=(6, 8))
 draw_Leaf(150000)  # 绘制分形树叶

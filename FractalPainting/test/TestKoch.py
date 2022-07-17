@@ -4,7 +4,7 @@
 # THIS FILE IS USED TO TEST PAINTING KOCH SNOWFLAKE
 # ----------------------------------------------------------
 import matplotlib.animation as animation
-from DrawFractal import *
+from src.DrawFractal import *
 
 # 绘制科赫雪花的动图
 figure = pl.figure()

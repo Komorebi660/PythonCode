@@ -1,9 +1,9 @@
 # ----------------------------------------------------------
 # coding=utf-8
-# Copyright © 2021 Komorebi660 All rights reserved.
+# Copyright © 2022 Komorebi660 All rights reserved.
 # THIS FILE IS USED TO TEST PAINTING JULIA SET
 # ----------------------------------------------------------
-from DrawFractal import *
+from src.DrawFractal import *
 
 # 绘制朱丽叶集
 C = [0.279, 0.400, 0.484, 0.544, 0.590, 0.626]
