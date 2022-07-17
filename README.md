@@ -7,14 +7,14 @@
 
 ## 内容简介
 
-- [图片转字符画](./ASCIIArt/README.md)
-- [分形图绘制](./FractalPainting/README.md)
-- [鼠标连点器](./MouseClick/README.md)
-- [神经网络图像风格迁移](./NeuralStyleTransfer/README.md)
-- [在线翻译中英翻译器](./Translator/README.md)
-- [中国科学技术大学自动健康打卡脚本](./USTC/README.md)
-- [`Verilog Testbench`自动生成器](./VerilogTestbenchGen/README.md)
-- [`MySQL`客户端框架](./MySQLClient/README.md)
+- [图片转字符画](./ASCIIArt/)
+- [分形图绘制](./FractalPainting/)
+- [鼠标连点器](./MouseClick/)
+- [神经网络图像风格迁移](./NeuralStyleTransfer/)
+- [在线翻译中英翻译器](./Translator/)
+- [中国科学技术大学自动健康打卡脚本](./USTC/)
+- [`Verilog Testbench`自动生成器](./VerilogTestbenchGen/)
+- [`MySQL`客户端框架](./MySQLClient/)
 
 ## 代码使用
 
