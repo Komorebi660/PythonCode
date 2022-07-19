@@ -2,6 +2,12 @@
 
 这是一个`C/S`架构的`MySQL`客户端框架, 它实现了`MySQL`与`Python`的基本交互功能, 支持登录与展示表格信息, 可在此基础上进行扩展。
 
+各个模块之间的连接图如下:
+
+<div align="center">
+<img src=./figure/module.png width=40%/>
+</div>
+
 ## Getting Started
 
 ### 安装MySQL Server
@@ -54,17 +60,7 @@ mysql -u root -p
 若出现:
 
 ```
-Welcome to the MySQL monitor. Commands end with ; or \g.
-Your MySQL connection id is 43
-Server version: 8.0.28 MySQL Community Server - GPL
-
-Copyright (c) 2000, 2022, Oracle and/or its affiliates.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+Welcome to the MySQL monitor.
 ```
 
 则表明成功登录。若要关闭连接, 请输入`exit`; 若要关闭`MySQL`服务, 请使用`net stop mysql`.
@@ -89,11 +85,19 @@ python main.py
 
 进一步我们可以在此框架上添加更多的功能, 如:数据的增、删、改、查等。该过程主要分为以下几步:
 
-首先利用`Qt Designer`创建`ui`文件, 然后使用`pyuic5`将生成的`.ui`文件转变为`.py`文件(放在`ui`文件夹内), 如:
+### Step 1
+
+利用`Qt Designer`创建`ui`文件, 然后使用`pyuic5`将生成的`.ui`文件转变为`.py`文件(放在`ui`文件夹内), 如:
 
 ```bash
 pyuic5 -o ./ui/UiLogin.py ./ui/PyQt_UI/login.ui
 pyuic5 -o ./ui/UiMainWindow.py ./ui/PyQt_UI/mainwindow.ui
 ```
 
-接着编写相应功能的`SQL`代码并进行测试, 以验证其功能性。最后在`src`文件夹中创建控制模块, 导入先前转换的`ui`文件, 并在控制模块中调用经过测试的`SQL`语句以实现相应的功能, 将结果以图形化的形式展现出来。
+### Step 2
+
+编写相应功能的`SQL`代码并进行测试, 以验证其功能性。
+
+### Step 3
+
+在`src`文件夹中创建控制模块, 导入先前转换的`ui`文件, 并在控制模块中调用经过测试的`SQL`语句以实现相应的功能, 将结果以图形化的形式展现出来。
