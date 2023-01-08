@@ -15,6 +15,7 @@
 - [中国科学技术大学自动健康打卡脚本](./USTC/)
 - [`Verilog Testbench`自动生成器](./VerilogTestbenchGen/)
 - [`MySQL`客户端框架](./MySQLClient/)
+- [`跳动心脏动图绘制`](./HeartBeat/)
 
 ## 代码使用
 

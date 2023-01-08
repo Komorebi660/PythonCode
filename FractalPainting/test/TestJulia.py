@@ -1,6 +1,6 @@
 # ----------------------------------------------------------
 # coding=utf-8
-# Copyright © 2022 Komorebi660 All rights reserved.
+# Copyright © 2023 Komorebi660 All rights reserved.
 # THIS FILE IS USED TO TEST PAINTING JULIA SET
 # ----------------------------------------------------------
 from src.DrawFractal import *

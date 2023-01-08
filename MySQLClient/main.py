@@ -1,6 +1,6 @@
 # ----------------------------------------------------------
 # -*- coding: UTF-8 -*-
-# Copyright © 2022 Komorebi660 All rights reserved.
+# Copyright © 2023 Komorebi660 All rights reserved.
 # ----------------------------------------------------------
 from src.MainWindow import MainWindow
 from PyQt5.QtWidgets import QApplication

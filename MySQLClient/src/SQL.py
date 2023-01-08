@@ -1,6 +1,6 @@
 # ----------------------------------------------------------
 # -*- coding: UTF-8 -*-
-# Copyright © 2022 Komorebi660 All rights reserved.
+# Copyright © 2023 Komorebi660 All rights reserved.
 # ----------------------------------------------------------
 book_gen = "DROP TABLE IF EXISTS Borrow;\
             DROP TABLE IF EXISTS Book;\

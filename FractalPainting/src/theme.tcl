@@ -1,4 +1,4 @@
-# Copyright © 2022 cyq <cyq0919@mail.ustc.edu.cn>
+# Copyright © 2023 cyq <cyq0919@mail.ustc.edu.cn>
 
 source "./theme/light.tcl"
 source "./theme/dark.tcl"
