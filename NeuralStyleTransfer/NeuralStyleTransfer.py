@@ -15,7 +15,7 @@ import torch
 from torch import nn, optim
 from torch.nn.functional import mse_loss
 from torchvision import transforms
-from torchvision.models import vgg19
+from torchvision.models import vgg19, VGG19_Weights
 from torchvision.transforms.functional import resize
 
 # 用户可修改的参数
@@ -46,12 +46,16 @@ else:
         RESULT_IMAGE_PATH = argv[2]
 
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"using {device}")
+if torch.backends.mps.is_available():
+    device = torch.device("mps")    # apple silicon
+elif torch.cuda.is_available():
+    device = torch.device("cuda")   # nvidia gpu
+else:
+    device = torch.device("cpu")
 
 
 class MultiLayerEncoder(nn.Sequential):
-    # 处理vgg,在layer后插入image
+    # 处理vgg,仅返回需要的层
     def forward(self, image, *layer_cfgs):
         storage = {}
         deepest_layer = self._find_deepest_layer(*layer_cfgs)
@@ -78,12 +82,6 @@ class MultiLayerEncoder(nn.Sequential):
         raise ValueError(
             f"Layer {layer} is not part of the multi-layer encoder.")
 
-    # 删除不必要的层
-    def trim(self, *layer_cfgs):
-        deepest_layer = self._find_deepest_layer(*layer_cfgs)
-        children_names = list(self.children_names())
-        del self[children_names.index(deepest_layer) + 1:]
-
 
 class Normalize(nn.Module):
     # VGG在训练的时候对RGB三个通道做了归一化，
@@ -99,7 +97,7 @@ class Normalize(nn.Module):
 
 
 class VGGMultiLayerEncoder(MultiLayerEncoder):
-    def __init__(self, vgg_net):
+    def __init__(self, vgg_net, *layer_cfgs):
         # 构造normalize层
         modules = OrderedDict((("preprocessing", Normalize()),))
         # 遍历vgg
@@ -126,6 +124,15 @@ class VGGMultiLayerEncoder(MultiLayerEncoder):
                 raise RuntimeError(msg)
 
             modules[layer] = module
+
+        #查询最深的网络名字
+        req_layers = set(itertools.chain(*layer_cfgs))
+        children_names = list(modules.keys())
+        deepest_layer = sorted(req_layers, key=children_names.index)[-1]
+        #删除不必要的层
+        del_keys = children_names[children_names.index(deepest_layer) + 1:]
+        for key in del_keys:
+            modules.pop(key)
 
         super().__init__(modules)
 
@@ -252,8 +259,8 @@ content_layers = ("relu4_2",)
 style_layers = ("relu1_1", "relu2_1", "relu3_1", "relu4_1", "relu5_1")
 
 # 构造模型
-multi_layer_encoder = VGGMultiLayerEncoder(vgg19(pretrained=True)).to(device)
-multi_layer_encoder.trim(content_layers, style_layers)
+multi_layer_encoder = VGGMultiLayerEncoder(vgg19(weights=VGG19_Weights.DEFAULT), content_layers, style_layers).to(device)
+#print(multi_layer_encoder)
 
 with torch.no_grad():
     target_content_encs = multi_layer_encoder(content_image, content_layers)[0]
